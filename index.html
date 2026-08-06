@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jihwan Lee — Portfolio</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Nav + hero together occupy exactly one viewport, so the intro is all you see
+     on load and Projects begins just past the fold. -->
+<div class="landing">
+  <nav class="topnav">
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-portrait">
+      <img src="assets/portrait.jpg" alt="Portrait of Jihwan Lee">
+    </div>
+
+    <div class="hero-text">
+      <h1>
+        <span class="hero-greeting">Hi, I am</span>
+        Jihwan Lee
+      </h1>
+      <p class="hero-tagline">I like <span class="rotator">building things</span></p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">View my work</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+  </header>
+</div>
+
+<main>
+  <!-- ---------- projects ---------- -->
+  <section class="wide" id="projects">
+    <header class="section-head">
+      <h2>Projects</h2>
+    </header>
+
+    <ol class="projects">
+      <li class="project">
+        <a class="project-shot" href="https://gamesetmatch.jihwantime.workers.dev" target="_blank" rel="noopener">
+          <img src="assets/project-1.jpg" alt="GameSetMatch home page">
+        </a>
+        <div class="project-body">
+          <h3><a href="https://gamesetmatch.jihwantime.workers.dev" target="_blank" rel="noopener">GameSetMatch</a></h3>
+          <p>A tennis match history web app running on Cloudflare Workers and D1, with a Hono API and a React front end. A Python ETL pipeline ingests 80K+ matches from a public archive, feeding a Scikit-Learn performance-rating model and a surface-aware Elo match predictor validated at 70% accuracy.</p>
+          <ul class="stack">
+            <li>TypeScript</li><li>React</li><li>Cloudflare Workers/D1</li><li>Hono</li><li>Python</li><li>Scikit-Learn</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="project">
+        <a class="project-shot" href="https://jihwantime.github.io/tennis-stroke-comparison/" target="_blank" rel="noopener">
+          <img src="assets/project-2.jpg" alt="Tennis Stroke Comparison project page">
+        </a>
+        <div class="project-body">
+          <h3><a href="https://jihwantime.github.io/tennis-stroke-comparison/" target="_blank" rel="noopener">Tennis Stroke Comparison</a></h3>
+          <p>A tool that extracts 33-keypoint pose skeletons from tennis video using MediaPipe Pose Landmarker, then renders frame-accurate skeleton overlays on the raw footage with HTML5 Canvas so two strokes can be compared side by side.</p>
+          <ul class="stack">
+            <li>Python</li><li>MediaPipe</li><li>OpenCV</li><li>JavaScript</li><li>HTML5 Canvas</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="project">
+        <a class="project-shot" href="https://colab.research.google.com/drive/1gzmmgKpRib6UthHhqpDiMU6IR8Z8EkX2?usp=sharing" target="_blank" rel="noopener">
+          <img src="assets/project-3.jpg" alt="Diabetes Patient Readmission Predictor notebook">
+        </a>
+        <div class="project-body">
+          <h3><a href="https://colab.research.google.com/drive/1gzmmgKpRib6UthHhqpDiMU6IR8Z8EkX2?usp=sharing" target="_blank" rel="noopener">Diabetes Patient Readmission Predictor</a></h3>
+          <p>Trained and evaluated a range of Scikit-Learn classification algorithms to predict patient readmission, using hyperparameter tuning and adjusted decision thresholds to handle severe class imbalance. The tuned model correctly identified 80% of at-risk patients that the baseline missed.</p>
+          <ul class="stack">
+            <li>Python</li><li>Pandas</li><li>Scikit-Learn</li><li>Matplotlib</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="project">
+        <a class="project-shot" href="http://learning-to-fly.onrender.com/" target="_blank" rel="noopener">
+          <img src="assets/project-4.jpg" alt="Learning to Fly airport database console">
+        </a>
+        <div class="project-body">
+          <h3><a href="http://learning-to-fly.onrender.com/" target="_blank" rel="noopener">SQL Airport Database</a></h3>
+          <p>An event-driven Python backend engine bridging a tkinter GUI with an SQLite database, using parameterised SQL queries to perform CRUD operations across multiple relational tables.</p>
+          <ul class="stack">
+            <li>Python</li><li>SQL</li><li>SQLite</li><li>tkinter</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ---------- experience ---------- -->
+  <section class="wide" id="experience">
+    <header class="section-head">
+      <h2>Experience</h2>
+    </header>
+
+    <ol class="roles">
+      <li class="role">
+        <div class="role-when">
+          <span class="role-dates">Mar 2026 — Present</span>
+        </div>
+        <div class="role-body">
+          <h3>Undergraduate Researcher</h3>
+          <p class="role-org">University of California, Irvine</p>
+          <p>Building a molecular dynamics pipeline in Python using MACE machine-learned potentials to map energy landscapes. Integrating force algorithms with generated potential energy surfaces to accelerate sampling of ligand–protein binding, and validating simulation accuracy on organic molecules as a testbed toward computational drug-design applications.</p>
+        </div>
+      </li>
+
+      <li class="role">
+        <div class="role-when">
+          <span class="role-dates">Nov 2025 — Feb 2026</span>
+        </div>
+        <div class="role-body">
+          <h3>Undergraduate Learning Assistant, ICS 33</h3>
+          <p class="role-org">University of California, Irvine</p>
+          <p>Supported TAs in labs for Intermediate Programming, helping students with assignments and projects on advanced Python mechanics. Assisted in weekly lectures of 200+ students with individualised support, and answered questions on the course discussion boards.</p>
+        </div>
+      </li>
+
+    </ol>
+  </section>
+</main>
+
+<!-- ---------- contact ---------- -->
+<footer class="contact" id="contact">
+  <div class="contact-inner">
+    <h2>Contact Me</h2>
+    <div class="contact-grid">
+      <div class="contact-primary">
+        <a class="contact-email" href="mailto:jihwanlzh@gmail.com">jihwanlzh@gmail.com</a>
+        <p class="contact-where">Irvine, California</p>
+      </div>
+      <div class="contact-links">
+        <span class="contact-label">Connect with me</span>
+        <ul>
+          <li><a href="https://github.com/jihwantime" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/jihwanlzh" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Animated in-page scrolling for the nav links.
+   Native `scroll-behavior: smooth` scales its duration with distance, so a short
+   hop — the top nav to Projects, say — gets a very short animation and reads as
+   a jerk. This gives every jump a floor duration and an eased curve that lands
+   slowly regardless of how far it travelled. */
+(function () {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* Cubic-bezier evaluator, same curve model CSS uses. Newton-Raphson to invert
+     x(t), then read y(t).
+
+     Curve choice matters more than duration here. An ease-in-out with a high
+     exponent lands beautifully but peaks at ~4x average velocity mid-flight,
+     and that lurch is what reads as "abrupt" — the jerk is in the middle, not
+     at the ends. This curve peaks at 2.43x instead while still spending its
+     last 20% of time covering only ~3% of the distance. */
+  const ease = (function (x1, y1, x2, y2) {
+    const A = (a, b) => 1 - 3 * b + 3 * a;
+    const B = (a, b) => 3 * b - 6 * a;
+    const C = a => 3 * a;
+    const cx = t => ((A(x1, x2) * t + B(x1, x2)) * t + C(x1)) * t;
+    const cy = t => ((A(y1, y2) * t + B(y1, y2)) * t + C(y1)) * t;
+    const dcx = t => 3 * A(x1, x2) * t * t + 2 * B(x1, x2) * t + C(x1);
+    return x => {
+      let t = x;
+      for (let i = 0; i < 8; i++) {
+        const err = cx(t) - x;
+        if (Math.abs(err) < 1e-6) break;
+        const d = dcx(t);
+        if (Math.abs(d) < 1e-6) break;
+        t -= err / d;
+      }
+      return cy(t);
+    };
+  })(0.45, 0, 0.30, 1);
+
+  const OFFSET = 28;      // breathing room above the target section
+  const MIN_MS = 900;     // floor, so nearby targets still get a full glide
+  const MAX_MS = 1900;    // ceiling, so the full-page trip isn't tedious
+  const PER_ROOT = 13;    // see duration() below
+
+  /* Duration grows with the square root of distance, not linearly. Linear
+     scaling plus a flat ceiling means long trips slam into the cap and end up
+     travelling several screens per second; sqrt keeps short hops near the floor
+     while letting long ones stretch, so peak speed stays in a similar band at
+     every distance. */
+  const duration = dist =>
+    Math.min(MAX_MS, Math.max(MIN_MS, MIN_MS + PER_ROOT * Math.sqrt(Math.abs(dist))));
+
+  let frame = null;
+  function cancel() {
+    if (frame !== null) { cancelAnimationFrame(frame); frame = null; }
+  }
+
+  function glideTo(targetY) {
+    const startY = window.scrollY;
+    // Clamp to the real scroll range, otherwise the last section — which sits
+    // closer to the bottom than one viewport — would ease toward a position the
+    // page can never reach and stop dead on arrival.
+    const maxY = document.documentElement.scrollHeight - window.innerHeight;
+    const endY = Math.max(0, Math.min(targetY, maxY));
+    const distance = endY - startY;
+    if (Math.abs(distance) < 1) return;
+
+    const ms = duration(distance);
+    const startedAt = performance.now();
+
+    cancel();
+    (function step(now) {
+      const t = Math.min((now - startedAt) / ms, 1);
+      window.scrollTo(0, startY + distance * ease(t));
+      frame = t < 1 ? requestAnimationFrame(step) : null;
+    })(startedAt);
+  }
+
+  // Hand control straight back if the user starts scrolling mid-flight.
+  ['wheel', 'touchstart', 'keydown'].forEach(evt =>
+    window.addEventListener(evt, cancel, { passive: true }));
+
+  document.addEventListener('click', e => {
+    const link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+
+    const id = link.getAttribute('href').slice(1);
+    const target = id && document.getElementById(id);
+    if (!target) return;
+
+    e.preventDefault();
+    const y = target.getBoundingClientRect().top + window.scrollY - OFFSET;
+
+    if (reduced.matches) window.scrollTo(0, y);
+    else glideTo(y);
+
+    history.pushState(null, '', '#' + id);
+  });
+})();
+
+/* Rotating tail for the "I like ___" line: cross-fades to the next phrase.
+   Edit PHRASES — that's the whole content of this feature. Keep them short
+   enough to stay on one line, or the paragraph height will shift as it cycles. */
+(function () {
+  const PHRASES = [
+    'building impactful software',
+    'playing tennis',
+    'exploring national parks',
+    'scrolling twitter',
+    'learning new skills',
+    'playing classical music',
+  ];
+
+  const HOLD_MS = 3750;   // how long before the next phrase starts coming in
+  const FADE_MS = 840;    // must match the .rotator transition duration in styles.css
+
+  const el = document.querySelector('.rotator');
+  if (!el || PHRASES.length < 2) return;
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let i = 0;
+  let timer = null;
+
+  function schedule(fn, ms) { timer = setTimeout(fn, ms); }
+
+  function next() {
+    el.classList.add('is-out');                 // fade current phrase out
+    schedule(() => {
+      i = (i + 1) % PHRASES.length;
+      el.textContent = PHRASES[i];
+      el.classList.remove('is-out');            // and the new one in
+      schedule(next, HOLD_MS);
+    }, reduced.matches ? 0 : FADE_MS);
+  }
+
+  // Don't cycle in a background tab — it would burn through phrases unseen and
+  // land on an arbitrary one when the reader comes back.
+  document.addEventListener('visibilitychange', () => {
+    clearTimeout(timer);
+    if (document.hidden) return;
+    // A hidden tab keeps firing timers but freezes CSS transitions, so we can
+    // come back to an element that is mid-fade and stuck at opacity 0. Snap it
+    // to a clean visible state before resuming.
+    el.classList.remove('is-out');
+    schedule(next, HOLD_MS);
+  });
+
+  el.textContent = PHRASES[0];
+  schedule(next, HOLD_MS);
+})();
+</script>
+
+</body>
+</html>

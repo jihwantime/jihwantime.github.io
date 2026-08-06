@@ -1,0 +1,440 @@
+/* Dark theme on warm charcoal rather than pure black. This is load-bearing, not
+   taste: the portrait's own background is literally #000 (measured 0,0 — no
+   recorded detail), so a charcoal page is lighter than the photo and the circle
+   defines its own edge with no border or fade. On pure black the two matched
+   and the portrait's boundary vanished. */
+:root {
+  --serif: "Palatino", "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  --sans: Calibri, "Gill Sans Nova", "Gill Sans", "Gill Sans MT", "Myriad Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --bg: #1e1b17;
+  --ink: #e2ddd3;        /* warm off-white — pure white halates badly on dark */
+  --ink-head: #f2eee6;
+  --grey: #948d83;
+  --grey-light: #6b665f;
+  --rule: rgba(255, 255, 255, 0.13);
+  --accent: #d9b877;     /* warm gold, picked up from the firelight in the photo */
+
+  --wide: 1140px;
+}
+
+* { box-sizing: border-box; }
+
+/* Deliberately NOT scroll-behavior: smooth — the nav scroll is animated in JS
+   (see index.html) for control over easing and duration, and the native version
+   would animate each step of that animation and fight it. */
+html { -webkit-font-smoothing: antialiased; }
+
+/* Only applies to a direct load with a #hash in the URL. */
+:target { scroll-margin-top: 28px; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 18.2px;
+  line-height: 26px;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { opacity: 0.72; }
+
+img { display: block; max-width: 100%; }
+
+/* ---------- top nav ---------- */
+
+/* One full viewport: nav pinned at the top, hero taking the rest and centring
+   itself in it. svh is the mobile-correct unit — vh there measures the tallest
+   possible viewport, so the hero would overflow behind the browser chrome. */
+.landing {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.topnav {
+  flex: none;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 34px 24px 0;
+  font-family: var(--sans);
+  font-size: 15.5px;
+}
+.topnav a { color: rgba(255, 255, 255, 0.68); }
+.topnav a:hover { color: #fff; opacity: 1; }
+
+/* ---------- hero ---------- */
+
+.hero {
+  flex: 1;                 /* claim the viewport space the nav doesn't use */
+  align-content: center;   /* and sit centred within it */
+  display: grid;
+  /* Both columns size to their content and the pair is centred as a unit. With
+     a 1fr text column the group sat left, because the text track absorbed all
+     the leftover width instead of leaving it split evenly either side. */
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-items: center;
+  /* Scales with the viewport so the pair stays generously spaced on wide
+     screens without colliding once the columns no longer fit side by side. */
+  gap: clamp(48px, 12vw, 160px);
+  width: 100%;
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 40px 40px 56px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 68px;
+  line-height: 1.05;
+  letter-spacing: -1px;
+  color: var(--ink-head);
+}
+
+/* Quiet lead-in above the name: much smaller, unbolded, and muted, so the name
+   carries all the weight. */
+.hero-greeting {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  color: var(--grey);
+}
+
+.hero-tagline {
+  margin: 24px 0 0;
+  font-size: 22px;
+  line-height: 32px;
+  color: var(--ink);
+  /* Reserve the line box so the buttons below don't jump as phrases swap. */
+  min-height: 32px;
+}
+
+/* The rotating phrase. inline-block so it can be transformed; the CSS duration
+   here must stay in sync with FADE_MS in the script. */
+.rotator {
+  display: inline-block;
+  color: var(--accent);
+  transition: opacity 0.84s ease, transform 0.84s ease;
+}
+.rotator.is-out {
+  opacity: 0;
+  transform: translateY(7px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rotator { transition: none; }
+  .rotator.is-out { transform: none; }
+}
+
+.hero-actions {
+  margin-top: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.btn {
+  padding: 11px 22px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  font-family: var(--sans);
+  font-size: 16px;
+  color: var(--ink);
+}
+.btn:hover { border-color: rgba(255, 255, 255, 0.4); color: #fff; opacity: 1; }
+
+.btn-primary {
+  background: rgba(217, 184, 119, 0.14);
+  border-color: rgba(217, 184, 119, 0.5);
+  color: var(--accent);
+}
+.btn-primary:hover {
+  background: rgba(217, 184, 119, 0.24);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Crisp circle — no fade, no border. The edge is visible because the photo's
+   black is darker than the charcoal page; see the note on --bg. */
+.hero-portrait {
+  width: 340px;
+  height: 340px;
+  flex: none;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.hero-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- wide sections ---------- */
+
+.wide {
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 54px 40px 0;
+}
+
+.section-head {
+  margin-bottom: 6px;
+  padding-bottom: 22px;
+}
+.section-head h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1.2;
+  color: var(--ink-head);
+}
+.section-head p {
+  margin: 8px 0 0;
+  font-family: var(--sans);
+  font-size: 16px;
+  color: var(--grey);
+}
+
+/* ---------- projects ---------- */
+
+.projects, .roles {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+
+.project {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 46px;
+  align-items: center;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.project-shot {
+  display: block;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #171410;
+}
+.project-shot img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.project-shot:hover { opacity: 1; }
+.project-shot:hover img { transform: scale(1.03); }
+
+.project-body h3 {
+  margin: 0 0 10px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.15;
+}
+.project-body h3 a { color: var(--ink-head); }
+.project-body h3 a:hover { color: var(--accent); opacity: 1; }
+
+.project-body p { margin: 0 0 14px; }
+
+.project-note {
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--grey);
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.stack li {
+  padding: 3px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  color: var(--grey);
+}
+
+/* ---------- experience ---------- */
+
+/* Same two-column rhythm as the projects list, with the date rail standing in
+   for the image so the two sections read as one system. */
+.role {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 46px;
+  padding: 34px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.role-when {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--sans);
+}
+.role-dates {
+  font-size: 15px;
+  color: var(--grey);
+  letter-spacing: 0.2px;
+}
+.role-tag {
+  padding: 2px 9px;
+  border-radius: 3px;
+  background: rgba(217, 184, 119, 0.16);
+  border: 1px solid rgba(217, 184, 119, 0.45);
+  color: var(--accent);
+  font-size: 13px;
+}
+
+.role-body h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--ink-head);
+}
+.role-org {
+  margin: 4px 0 12px;
+  font-family: var(--sans);
+  font-size: 16px;
+  color: var(--accent);
+}
+.role-body p { margin: 0; }
+
+/* ---------- contact ---------- */
+
+/* Recessed just below the page tone so the footer separates without a hard rule. */
+.contact {
+  margin-top: 90px;
+  padding: 88px 40px 56px;
+  background: #16130f;
+  border-top: 1px solid var(--rule);
+}
+
+/* Minus the band's own horizontal padding, so the footer's left edge lands on
+   the same line as every section above it. */
+.contact-inner { max-width: calc(var(--wide) - 80px); margin: 0 auto; }
+
+.contact h2 {
+  margin: 0 0 44px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 46px;
+  line-height: 1.1;
+  color: var(--ink-head);
+}
+
+/* No bottom border — it used to separate this block from the copyright line,
+   and with that gone it would just be a rule floating at the page's end. */
+.contact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 44px;
+}
+
+.contact-email {
+  font-family: var(--serif);
+  font-size: 30px;
+  color: var(--ink-head);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  padding-bottom: 2px;
+}
+.contact-email:hover { opacity: 1; color: var(--accent); border-bottom-color: var(--accent); }
+
+.contact-where {
+  margin: 16px 0 0;
+  font-family: var(--sans);
+  font-size: 16px;
+  color: var(--grey);
+}
+
+.contact-label {
+  display: block;
+  margin-bottom: 14px;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--grey-light);
+}
+
+.contact-links ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.contact-links a {
+  font-family: var(--sans);
+  font-size: 16px;
+  color: var(--ink);
+}
+.contact-links a:hover { color: var(--accent); opacity: 1; }
+
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1000px) {
+  /* No gap override here — the clamp on .hero already scales it with the
+     viewport, and a fixed value would silently win over it. */
+  .hero h1 { font-size: 56px; }
+  .hero-greeting { font-size: 22px; }
+  .hero-portrait { width: 280px; height: 280px; }
+  .project, .role { grid-template-columns: 320px 1fr; gap: 34px; }
+}
+
+@media (max-width: 780px) {
+  /* Stack the hero, portrait first — it reads better as the opening image. */
+  .hero {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 30px;
+    padding: 24px 24px 48px;
+  }
+  .hero-portrait { width: 215px; height: 215px; }
+  .hero h1 { font-size: 44px; }
+  .hero-greeting { font-size: 19px; margin-bottom: 6px; }
+  .hero-tagline { font-size: 19px; line-height: 29px; min-height: 29px; }
+  .hero-actions { justify-content: center; }
+
+  .topnav { gap: 20px; font-size: 14.5px; padding-top: 26px; }
+
+  body { font-size: 17.5px; line-height: 25px; }
+
+  .wide { padding: 40px 24px 0; }
+  .section-head h2 { font-size: 28px; }
+
+  /* Stack the two-column rows; the image leads, then the text. */
+  .project, .role { grid-template-columns: 1fr; gap: 20px; }
+  .project { padding: 30px 0; }
+  .role-when { flex-direction: row; align-items: center; gap: 12px; }
+  .project-body h3 { font-size: 26px; }
+
+  .contact { margin-top: 60px; padding: 60px 24px 44px; }
+  .contact h2 { font-size: 34px; margin-bottom: 32px; }
+  .contact-email { font-size: 24px; }
+}

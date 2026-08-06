@@ -1,0 +1,8 @@
+# The full-resolution master of the camping photo. It stays local on purpose:
+# it is 1.8MB, nothing on the site references it, and publishing it would put a
+# full-res photo of you and two friends on a public URL. portrait.jpg (the
+# cropped, web-sized derivative) is the only version that ships.
+assets/hero-original.jpg
+
+# macOS
+.DS_Store
