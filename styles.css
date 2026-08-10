@@ -1,19 +1,19 @@
-/* Dark theme on warm charcoal rather than pure black. This is load-bearing, not
-   taste: the portrait's own background is literally #000 (measured 0,0 — no
-   recorded detail), so a charcoal page is lighter than the photo and the circle
-   defines its own edge with no border or fade. On pure black the two matched
-   and the portrait's boundary vanished. */
+/* LessWrong palette: white ground, near-black serif prose, hairline rules, and
+   their signature green for links with the tan used on their review pills.
+   Layout, type sizes and spacing are unchanged from the dark version — this is
+   a recolour only. */
 :root {
   --serif: "Palatino", "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   --sans: Calibri, "Gill Sans Nova", "Gill Sans", "Gill Sans MT", "Myriad Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-  --bg: #1e1b17;
-  --ink: #e2ddd3;        /* warm off-white — pure white halates badly on dark */
-  --ink-head: #f2eee6;
-  --grey: #948d83;
-  --grey-light: #6b665f;
-  --rule: rgba(255, 255, 255, 0.13);
-  --accent: #d9b877;     /* warm gold, picked up from the firelight in the photo */
+  --bg: #fff;
+  --ink: rgba(0, 0, 0, 0.87);   /* LessWrong body text — never pure black */
+  --ink-head: #424242;          /* their section headings sit lighter than body */
+  --grey: #757575;
+  --grey-light: #9e9e9e;
+  --rule: rgba(0, 0, 0, 0.1);
+  --accent: #327e09;            /* LessWrong link green */
+  --tan: #b3a56f;               /* their review-pill tan */
 
   --wide: 1140px;
 }
@@ -54,6 +54,8 @@ img { display: block; max-width: 100%; }
   min-height: 100svh;
 }
 
+
+
 .topnav {
   flex: none;
   display: flex;
@@ -63,8 +65,8 @@ img { display: block; max-width: 100%; }
   font-family: var(--sans);
   font-size: 15.5px;
 }
-.topnav a { color: rgba(255, 255, 255, 0.68); }
-.topnav a:hover { color: #fff; opacity: 1; }
+.topnav a { color: rgba(0, 0, 0, 0.6); }
+.topnav a:hover { color: rgba(0, 0, 0, 0.87); opacity: 1; }
 
 /* ---------- hero ---------- */
 
@@ -149,21 +151,19 @@ img { display: block; max-width: 100%; }
   font-size: 16px;
   color: var(--ink);
 }
-.btn:hover { border-color: rgba(255, 255, 255, 0.4); color: #fff; opacity: 1; }
+.btn:hover { border-color: rgba(0, 0, 0, 0.35); color: rgba(0, 0, 0, 0.87); opacity: 1; }
 
 .btn-primary {
-  background: rgba(217, 184, 119, 0.14);
-  border-color: rgba(217, 184, 119, 0.5);
-  color: var(--accent);
+  background: rgba(179, 165, 111, 0.16);
+  border-color: rgba(179, 165, 111, 0.55);
+  color: #6f6535;
 }
 .btn-primary:hover {
-  background: rgba(217, 184, 119, 0.24);
-  border-color: var(--accent);
-  color: var(--accent);
+  background: rgba(179, 165, 111, 0.28);
+  border-color: var(--tan);
+  color: #5c5329;
 }
 
-/* Crisp circle — no fade, no border. The edge is visible because the photo's
-   black is darker than the charcoal page; see the note on --bg. */
 .hero-portrait {
   width: 340px;
   height: 340px;
@@ -175,6 +175,13 @@ img { display: block; max-width: 100%; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Empty state. Remove the is-empty class once a photo goes back in — the fill
+   and ring would otherwise show through any image with transparency. */
+.hero-portrait.is-empty {
+  background: #f1f0ed;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.09);
 }
 
 /* ---------- wide sections ---------- */
@@ -226,7 +233,7 @@ img { display: block; max-width: 100%; }
   display: block;
   overflow: hidden;
   border-radius: 3px;
-  background: #171410;
+  background: #f1f0ed;
 }
 .project-shot img {
   width: 100%;
@@ -299,9 +306,9 @@ img { display: block; max-width: 100%; }
 .role-tag {
   padding: 2px 9px;
   border-radius: 3px;
-  background: rgba(217, 184, 119, 0.16);
-  border: 1px solid rgba(217, 184, 119, 0.45);
-  color: var(--accent);
+  background: var(--tan);
+  border: 1px solid var(--tan);
+  color: #fff;
   font-size: 13px;
 }
 
@@ -327,7 +334,7 @@ img { display: block; max-width: 100%; }
 .contact {
   margin-top: 90px;
   padding: 88px 40px 56px;
-  background: #16130f;
+  background: #faf9f6;
   border-top: 1px solid var(--rule);
 }
 
@@ -357,7 +364,7 @@ img { display: block; max-width: 100%; }
   font-family: var(--serif);
   font-size: 30px;
   color: var(--ink-head);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   padding-bottom: 2px;
 }
 .contact-email:hover { opacity: 1; color: var(--accent); border-bottom-color: var(--accent); }
